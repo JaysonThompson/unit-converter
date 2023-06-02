@@ -9,7 +9,7 @@ const massEl = document.getElementById('mass-container')
 const metricStr = ''
 const impericalStr = ''
 
-convBtnEl.addEventListener('click', function () {
+convBtnEl.addEventListener('click', () => {
   resetText()
   const inputNum = document.getElementById('number-to-convert').value
   const numToConvert = Number(inputNum)
@@ -18,32 +18,12 @@ convBtnEl.addEventListener('click', function () {
   conversionCalc(massEl, numToConvert, massConv, 'kilograms', 'pounds')
 })
 
-function conversionCalc(
-  element,
-  number,
-  conversionNum,
-  metricStr,
-  impericalStr,
-) {
+const conversionCalc = (element, number, conversionNum, metricStr, impericalStr) => {
   let convertedNum1 = number * conversionNum
   let convertedNum2 = number / conversionNum
-  createText(
-    element,
-    number,
-    convertedNum1,
-    convertedNum2,
-    metricStr,
-    impericalStr,
-  )
+  createText(element, number, convertedNum1, convertedNum2, metricStr, impericalStr)
 }
-function createText(
-  el,
-  number,
-  convertedNum1,
-  convertedNum2,
-  metricStr,
-  impericalStr,
-) {
+const createText = (el, number, convertedNum1, convertedNum2, metricStr, impericalStr) => {
   el.innerHTML += `
   <p class="converted-output">
   ${number} ${metricStr} = ${convertedNum1.toFixed(
@@ -55,7 +35,7 @@ function createText(
   `
 }
 
-function resetText() {
+const resetText = () => {
   let lengthParagraphEl = document.querySelector('#length-container p')
   let volumeParagraphEl = document.querySelector('#volume-container p')
   let massParagraphEl = document.querySelector('#mass-container p')
